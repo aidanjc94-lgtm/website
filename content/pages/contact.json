@@ -1,0 +1,10 @@
+{
+  "eyebrow": "Contact",
+  "title": "Get in touch before you run",
+  "intro": "Phase one uses static-safe contact options only: email links, location information and external links once approved. No server-side form is included.",
+  "contactIntro": "Use the details below to check sessions, ask about joining, enquire about Couch to 5K or confirm Fenland 10 information.",
+  "emailTodo": "TODO: replace with approved public club email address.",
+  "venueTodo": "TODO: add approved address, map link, what3words and parking/accessibility notes.",
+  "formTodo": "Future contact form functionality is intentionally not built in phase one. If requested later, add a privacy-reviewed form backend or external form link.",
+  "published": true
+}
