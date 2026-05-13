@@ -1,0 +1,8 @@
+[
+  { "name": "Tom Richards", "role": "Chair", "description": "Confirm name and consent before publishing.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 10 },
+  { "name": "Adrian Searle", "role": "Vice Chair", "description": "Confirm name and consent before publishing.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 20 },
+  { "name": "Tony Foice-Beard", "role": "Treasurer", "description": "Confirm name and consent before publishing.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 30 },
+  { "name": "Jac Richards", "role": "Secretary", "description": "Confirm name and consent before publishing.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 40 },
+  { "name": "Dan Tickner", "role": "Membership Secretary", "description": "Confirm name and consent before publishing.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 50 },
+  { "name": "Stephanie Payne", "role": "Lead Welfare Officer", "description": "Confirm name and consent before publishing.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 60 }
+]

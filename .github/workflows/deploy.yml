@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # GitHub scheduled workflows use UTC. This morning rebuild keeps date-based page visibility current.
+  schedule:
+    - cron: '17 7 * * *'
 
 permissions:
   contents: read

@@ -1,0 +1,29 @@
+{
+  "pageKey": "training",
+  "title": "Training",
+  "navigationLabel": "Training",
+  "href": "/training/",
+  "status": "live",
+  "showInHeader": true,
+  "showInFooter": true,
+  "showOnHomepage": true,
+  "navigationOrder": 30,
+  "startDate": "",
+  "endDate": "",
+  "closedMessage": "",
+  "archiveMessage": "",
+  "seoNoIndex": false,
+  "homepagePromo": {
+    "eyebrow": "Club nights",
+    "title": "Club nights",
+    "text": "The club generally meets Tuesday and Thursday evenings at Wisbech Rugby Club for adult running sessions.",
+    "linkLabel": "Training",
+    "icon": "🏃"
+  },
+  "heroEyebrow": "Training",
+  "heroTitle": "Club nights with friendly support",
+  "heroIntro": "Fenland Running Club generally meets on Tuesday and Thursday evenings at Wisbech Rugby Club. Sessions are supported by qualified coaches and run leaders.",
+  "alert": "Confirm current meeting times, exact meeting point, session descriptions and safety briefing before launch.",
+  "expectTitle": "What to expect",
+  "expectIntro": "Bring suitable running kit, weather-appropriate layers and any medication you normally carry. New runners should make themselves known to a coach or run leader at the start of the session."
+}

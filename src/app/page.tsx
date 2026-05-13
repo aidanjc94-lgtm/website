@@ -6,30 +6,43 @@ import { SectionHeader } from '@/components/sections/SectionHeader';
 import { AlertBanner } from '@/components/ui/AlertBanner';
 import { CTAButton } from '@/components/ui/CTAButton';
 import { events } from '@/content/events';
-import { newsPosts } from '@/content/news';
+import { featuredNewsPosts, newsPosts } from '@/content/news';
+import { getPageByKey, shouldShowOnHomepage } from '@/lib/pageVisibility';
 
 export default function HomePage() {
-  const featuredNews = newsPosts.slice(0, 3);
+  const featuredNews = (featuredNewsPosts.length > 0 ? featuredNewsPosts : newsPosts).slice(0, 3);
+  const homePage = getPageByKey('home');
   const featuredEvents = events.slice(0, 3);
+  const homepageFeatureKeys = ['couch-to-5k', 'training', 'fenland-10', 'about'];
+  const homepageFeaturePages = homepageFeatureKeys.map(getPageByKey).filter(shouldShowOnHomepage);
+  const fenland10Page = getPageByKey('fenland-10');
+  const couchTo5KPage = getPageByKey('couch-to-5k');
+  const spotlightPages = [fenland10Page, couchTo5KPage].filter(shouldShowOnHomepage);
 
   return (
     <>
       <Hero />
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Find your pace" title="A club for different running journeys" intro="Whether you are building confidence, returning to running, training for races or looking for a friendly group, Fenland Running Club is here to help you enjoy running." />
+          <SectionHeader eyebrow={String(homePage.sectionEyebrow)} title={String(homePage.sectionTitle)} intro={String(homePage.sectionIntro)} />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <FeatureCard icon="👟" title="New runners" text="Start with encouragement and clear advice. Couch to 5K details are included with TODO markers where dates need confirming." href="/couch-to-5k/" linkLabel="Couch to 5K" />
-            <FeatureCard icon="🏃" title="Club nights" text="The club generally meets Tuesday and Thursday evenings at Wisbech Rugby Club for adult running sessions." href="/training/" linkLabel="Training" />
-            <FeatureCard icon="🏁" title="Race entrants" text="Fenland Running Club participates in leagues and relays, and hosts the Fenland 10." href="/fenland-10/" linkLabel="Fenland 10" />
-            <FeatureCard icon="🤝" title="Community" text="Friendly, inclusive and welcoming, with qualified coaches and run leaders supporting club activity." href="/about/" linkLabel="About us" />
+            {homepageFeaturePages.map((page) => (
+              <FeatureCard
+                key={page.pageKey}
+                icon={page.homepagePromo?.icon || '🏃'}
+                title={page.homepagePromo?.title || page.title}
+                text={page.homepagePromo?.text || ''}
+                href={page.href}
+                linkLabel={page.homepagePromo?.linkLabel || page.navigationLabel}
+              />
+            ))}
           </div>
         </div>
       </section>
       <section className="bg-fenland-soft py-16 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
-            <SectionHeader eyebrow="Training" title="Tuesday and Thursday evenings" intro="Club sessions usually start from Wisbech Rugby Club. Final times and session formats should be confirmed by the club before launch." />
+            <SectionHeader eyebrow="Training" title={String(homePage.trainingTitle)} intro={String(homePage.trainingIntro)} />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row"><CTAButton href="/training/">View training</CTAButton><CTAButton href="/join/" variant="outline">How to join</CTAButton></div>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -40,24 +53,24 @@ export default function HomePage() {
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
-            <div className="rounded-5xl bg-fenland-purple p-8 text-white shadow-card">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-white/70">Club race</p>
-              <h2 className="mt-4 text-4xl font-black">Fenland 10</h2>
-              <p className="mt-4 leading-8 text-white/80">The club hosts the Fenland 10. Race date, venue, entry details and licence information need confirming before the page is promoted.</p>
-              <CTAButton className="mt-6" href="/fenland-10/" variant="secondary">Fenland 10 details</CTAButton>
-            </div>
-            <div className="rounded-5xl bg-white p-8 shadow-card ring-1 ring-fenland-purple/10">
-              <p className="text-sm font-black uppercase tracking-[0.22em] text-fenland-red">Beginner pathway</p>
-              <h2 className="mt-4 text-4xl font-black text-fenland-dark">Couch to 5K</h2>
-              <p className="mt-4 leading-8 text-fenland-dark/75">Fenland Running Club has a Couch to 5K programme. The next start date and sign-up route are TODO items for club confirmation.</p>
-              <CTAButton className="mt-6" href="/couch-to-5k/">Learn more</CTAButton>
-            </div>
+            {spotlightPages.map((page) => {
+              const isRaceCard = page.pageKey === 'fenland-10';
+
+              return (
+                <div key={page.pageKey} className={isRaceCard ? 'rounded-5xl bg-fenland-purple p-8 text-white shadow-card' : 'rounded-5xl bg-white p-8 shadow-card ring-1 ring-fenland-purple/10'}>
+                  <p className={isRaceCard ? 'text-sm font-black uppercase tracking-[0.22em] text-white/70' : 'text-sm font-black uppercase tracking-[0.22em] text-fenland-red'}>{page.homepagePromo?.eyebrow}</p>
+                  <h2 className={isRaceCard ? 'mt-4 text-4xl font-black' : 'mt-4 text-4xl font-black text-fenland-dark'}>{page.homepagePromo?.title || page.title}</h2>
+                  <p className={isRaceCard ? 'mt-4 leading-8 text-white/80' : 'mt-4 leading-8 text-fenland-dark/75'}>{page.homepagePromo?.text}</p>
+                  <CTAButton className="mt-6" href={page.href} variant={isRaceCard ? 'secondary' : 'primary'}>{page.homepagePromo?.linkLabel || page.navigationLabel}</CTAButton>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
       <section className="bg-fenland-soft py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Latest" title="Club updates" intro="Editable news posts are kept in simple content files so volunteers can update them through pull requests." />
+          <SectionHeader eyebrow={String(homePage.newsEyebrow)} title={String(homePage.newsTitle)} intro={String(homePage.newsIntro)} />
           <div className="mt-10 grid gap-6 md:grid-cols-3">{featuredNews.map((post) => <NewsCard key={post.slug} post={post} />)}</div>
           <div className="mt-10"><AlertBanner>Replace placeholder updates with approved club news before public launch.</AlertBanner></div>
         </div>

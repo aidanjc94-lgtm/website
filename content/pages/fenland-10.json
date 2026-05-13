@@ -1,0 +1,25 @@
+{
+  "pageKey": "fenland-10",
+  "title": "Fenland 10",
+  "navigationLabel": "Fenland 10",
+  "href": "/fenland-10/",
+  "status": "live",
+  "showInHeader": true,
+  "showInFooter": true,
+  "showOnHomepage": true,
+  "navigationOrder": 50,
+  "startDate": "",
+  "endDate": "",
+  "closedMessage": "",
+  "archiveMessage": "This Fenland 10 page is kept for reference. TODO: add approved archive wording if needed.",
+  "seoNoIndex": false,
+  "homepagePromo": {
+    "eyebrow": "Club race",
+    "title": "Fenland 10",
+    "text": "The club hosts the Fenland 10. Race date, venue, entry details and licence information need confirming before the page is promoted.",
+    "linkLabel": "Fenland 10 details",
+    "icon": "🏁"
+  },
+  "heroEyebrow": "Club race",
+  "alert": "Confirm all Fenland 10 race details, entry links, race licence, refund/transfer rules and race-day instructions before launch."
+}

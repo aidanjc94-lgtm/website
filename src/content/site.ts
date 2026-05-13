@@ -1,28 +1,29 @@
+import siteSettings from '../../content/settings/site.json';
+import contactSettings from '../../content/settings/contact.json';
+import socialLinksData from '../../content/settings/social-links.json';
+
 export const site = {
-  name: 'Fenland Running Club',
-  shortName: 'FRC',
-  description:
-    'A friendly adult running club based in Wisbech, Cambridgeshire, helping runners of different abilities enjoy running together.',
-  email: 'TODO@example.com',
-  venue: 'Wisbech Rugby Club',
-  location: 'Wisbech, Cambridgeshire',
-  meetingSummary: 'Tuesday and Thursday evenings at Wisbech Rugby Club. TODO: confirm current meeting times before launch.',
-  logo: '/images/OIP.png',
-  socialLinks: [
-    { label: 'Facebook', href: 'TODO: add official Facebook URL' },
-    { label: 'Instagram', href: 'TODO: add official Instagram URL' },
-  ],
+  name: siteSettings.clubName,
+  shortName: siteSettings.shortName,
+  description: siteSettings.shortDescription,
+  defaultSeoTitle: siteSettings.defaultSeoTitle,
+  defaultSeoDescription: siteSettings.defaultSeoDescription,
+  email: contactSettings.generalEnquiryEmail,
+  membershipEmail: contactSettings.membershipEnquiryEmail,
+  welfareEmail: contactSettings.welfareContactEmail,
+  fenland10Email: contactSettings.fenland10EnquiryEmail,
+  venue: contactSettings.venueName,
+  venueAddress: contactSettings.venueAddress,
+  location: contactSettings.locationSummary,
+  mapLink: contactSettings.mapLink,
+  what3words: contactSettings.what3words,
+  meetingSummary: `${contactSettings.venueName}, ${contactSettings.locationSummary}`,
+  logo: siteSettings.logoPath,
+  primaryCtaLabel: siteSettings.primaryCtaLabel,
+  primaryCtaHref: siteSettings.primaryCtaHref,
+  secondaryCtaLabel: siteSettings.secondaryCtaLabel,
+  secondaryCtaHref: siteSettings.secondaryCtaHref,
+  socialLinks: socialLinksData.filter((link) => link.published).sort((a, b) => a.order - b.order),
 };
 
-export const navigation = [
-  { label: 'About', href: '/about/' },
-  { label: 'Join us', href: '/join/' },
-  { label: 'Training', href: '/training/' },
-  { label: 'Couch to 5K', href: '/couch-to-5k/' },
-  { label: 'Fenland 10', href: '/fenland-10/' },
-  { label: 'Calendar', href: '/calendar/' },
-  { label: 'News', href: '/news/' },
-  { label: 'Welfare & policies', href: '/welfare-policies/' },
-  { label: 'Club kit', href: '/club-kit/' },
-  { label: 'Contact', href: '/contact/' },
-];
+export const contact = contactSettings;

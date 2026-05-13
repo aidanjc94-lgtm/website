@@ -1,0 +1,274 @@
+media:
+  - name: images
+    label: Images
+    input: public/uploads/images
+    output: /uploads/images
+  - name: documents
+    label: Documents
+    input: public/uploads/documents
+    output: /uploads/documents
+
+content:
+  - name: settings_site
+    label: Club management / Site settings
+    type: file
+    path: content/settings/site.json
+    format: json
+    fields:
+      - { name: clubName, label: Club name, type: string, required: true }
+      - { name: shortName, label: Short club name, type: string }
+      - { name: shortDescription, label: Short description, type: text, required: true }
+      - { name: defaultSeoTitle, label: Default SEO title, type: string, required: true }
+      - { name: defaultSeoDescription, label: Default SEO description, type: text, required: true }
+      - { name: logoPath, label: Logo path, type: image, required: true, description: Keep the club logo unchanged unless the committee approves a replacement. }
+      - { name: primaryCtaLabel, label: Primary call-to-action label, type: string }
+      - { name: primaryCtaHref, label: Primary call-to-action link, type: string }
+      - { name: secondaryCtaLabel, label: Secondary call-to-action label, type: string }
+      - { name: secondaryCtaHref, label: Secondary call-to-action link, type: string }
+
+  - name: settings_contact
+    label: Club management / Contact details
+    type: file
+    path: content/settings/contact.json
+    format: json
+    fields:
+      - { name: generalEnquiryEmail, label: General enquiry email, type: string, required: true }
+      - { name: membershipEnquiryEmail, label: Membership enquiry email, type: string }
+      - { name: welfareContactEmail, label: Welfare contact email, type: string }
+      - { name: fenland10EnquiryEmail, label: Fenland 10 enquiry email, type: string }
+      - { name: venueName, label: Venue name, type: string }
+      - { name: venueAddress, label: Venue address, type: text }
+      - { name: locationSummary, label: Location summary, type: string }
+      - { name: mapLink, label: Map link, type: string }
+      - { name: what3words, label: what3words, type: string, description: Only publish if the club uses it. }
+      - { name: contactPageIntro, label: Contact page notes, type: text }
+      - { name: contactNotes, label: Notes shown below email, type: text }
+      - { name: meetingPointNotes, label: Meeting point notes, type: text }
+      - name: publishedContactMethods
+        label: Published contact methods only
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string, required: true }
+          - { name: value, label: Value, type: string, required: true }
+          - { name: href, label: Link, type: string }
+          - { name: published, label: Show on website, type: boolean }
+          - { name: order, label: Order, type: number }
+
+  - name: settings_social
+    label: Club management / Social links
+    type: file
+    path: content/settings/social-links.json
+    format: json
+    list: true
+    fields:
+      - { name: label, label: Social network, type: string, required: true }
+      - { name: href, label: Link URL, type: string, required: true }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: order, label: Order, type: number }
+
+  - name: settings_navigation
+    label: Club management / Navigation
+    type: file
+    path: content/settings/navigation.json
+    format: json
+    list: true
+    fields:
+      - { name: label, label: Menu label, type: string, required: true }
+      - { name: href, label: URL, type: string, required: true }
+      - { name: pageKey, label: Linked page key, type: string, description: Optional. Use this to respect page lifecycle visibility. }
+      - { name: showInHeader, label: Show in main menu, type: boolean }
+      - { name: showInFooter, label: Show in footer, type: boolean }
+      - { name: order, label: Order, type: number }
+
+  - name: page_home
+    label: Page content / Home
+    type: file
+    path: content/pages/home.json
+    format: json
+    fields: &page_fields
+      - { name: pageKey, label: Page key, type: string, required: true }
+      - { name: title, label: Page title, type: string, required: true }
+      - { name: navigationLabel, label: Navigation label, type: string, required: true }
+      - { name: href, label: Page URL, type: string, required: true }
+      - name: status
+        label: Page status
+        type: select
+        options: { values: [live, closed, hidden, archived] }
+        required: true
+      - { name: showInHeader, label: Show in main menu, type: boolean, description: Turn this off to remove from top navigation. }
+      - { name: showInFooter, label: Show in footer, type: boolean }
+      - { name: showOnHomepage, label: Show on homepage, type: boolean }
+      - { name: navigationOrder, label: Navigation order, type: number }
+      - { name: startDate, label: Start date, type: date, required: false }
+      - { name: endDate, label: End date, type: date, required: false }
+      - { name: closedMessage, label: Message to show when closed, type: text, required: false }
+      - { name: archiveMessage, label: Archive message, type: text, required: false }
+      - { name: seoNoIndex, label: Ask search engines not to index, type: boolean }
+      - { name: heroEyebrow, label: Hero small heading, type: string, required: false }
+      - { name: heroTitle, label: Hero title, type: string, required: false }
+      - { name: heroIntro, label: Hero intro, type: text, required: false }
+      - name: homepagePromo
+        label: Homepage promotional card
+        type: object
+        fields:
+          - { name: eyebrow, label: Small heading, type: string, required: false }
+          - { name: title, label: Card title, type: string, required: false }
+          - { name: text, label: Card text, type: text, required: false }
+          - { name: linkLabel, label: Link label, type: string, required: false }
+          - { name: icon, label: Icon, type: string, required: false }
+  - { name: page_about, label: Page content / About, type: file, path: content/pages/about.json, format: json, fields: *page_fields }
+  - { name: page_join, label: Page content / Join Us, type: file, path: content/pages/join.json, format: json, fields: *page_fields }
+  - { name: page_training, label: Page content / Training, type: file, path: content/pages/training.json, format: json, fields: *page_fields }
+  - { name: page_couch, label: Page content / Couch to 5K, type: file, path: content/pages/couch-to-5k.json, format: json, fields: *page_fields }
+  - { name: page_fenland10, label: Page content / Fenland 10, type: file, path: content/pages/fenland-10.json, format: json, fields: *page_fields }
+  - { name: page_club_kit, label: Page content / Club Kit, type: file, path: content/pages/club-kit.json, format: json, fields: *page_fields }
+  - { name: page_welfare, label: Page content / Welfare & Policies, type: file, path: content/pages/welfare-policies.json, format: json, fields: *page_fields }
+  - { name: page_contact, label: Page content / Contact, type: file, path: content/pages/contact.json, format: json, fields: *page_fields }
+
+  - name: news
+    label: News
+    type: collection
+    path: content/news
+    format: yaml-frontmatter
+    filename: '{slug}.md'
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: slug, label: Slug, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: author, label: Author, type: string }
+      - { name: category, label: Category, type: string, required: true }
+      - { name: summary, label: Summary, type: text, required: true }
+      - { name: mainImage, label: Main image, type: image }
+      - { name: imageAlt, label: Image alt text, type: string }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: featured, label: Feature on homepage, type: boolean }
+      - { name: body, label: Body content, type: rich-text }
+
+  - name: events
+    label: Events and calendar
+    type: file
+    path: content/events/events.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Event title, type: string, required: true }
+      - { name: date, label: Date, type: string, required: true }
+      - { name: time, label: Time, type: string }
+      - { name: location, label: Location, type: string }
+      - { name: category, label: Category, type: string }
+      - { name: summary, label: Summary, type: text }
+      - { name: link, label: Link, type: string }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: featured, label: Feature on homepage, type: boolean }
+      - { name: order, label: Order, type: number }
+
+  - name: people_committee
+    label: People / Committee members
+    type: file
+    path: content/people/committee.json
+    format: json
+    list: true
+    fields: &people_fields
+      - { name: name, label: Name, type: string, description: If blank, the website shows TODO: Name required. }
+      - { name: role, label: Role, type: string, required: true }
+      - { name: description, label: Description, type: text }
+      - { name: image, label: Image, type: image }
+      - { name: imageAlt, label: Image alt text, type: string }
+      - { name: email, label: Public email, type: string, description: Only add public/role emails approved for the website. }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: order, label: Order, type: number }
+  - { name: people_coaches, label: People / Coaches, type: file, path: content/people/coaches.json, format: json, list: true, fields: *people_fields }
+  - { name: people_run_leaders, label: People / Run leaders, type: file, path: content/people/run-leaders.json, format: json, list: true, fields: *people_fields }
+
+  - name: faqs
+    label: FAQs
+    type: file
+    path: content/faqs/faqs.json
+    format: json
+    list: true
+    fields:
+      - { name: question, label: Question, type: string, required: true }
+      - { name: answer, label: Answer, type: text, required: true }
+      - { name: category, label: Category, type: string, required: true }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: order, label: Order, type: number }
+
+  - name: policies
+    label: Policies
+    type: file
+    path: content/policies/policies.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: summary, label: Summary, type: text }
+      - { name: documentLink, label: Document link or uploaded file, type: string }
+      - { name: policyCategory, label: Policy category, type: string }
+      - { name: lastReviewedDate, label: Last reviewed date, type: date, required: false }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: order, label: Order, type: number }
+
+  - name: club_kit
+    label: Club kit
+    type: file
+    path: content/pages/club-kit-items.json
+    format: json
+    fields:
+      - { name: intro, label: Intro, type: text }
+      - { name: orderInformation, label: Order information, type: text }
+      - { name: contactOrSupplierNote, label: Contact or supplier note, type: text }
+      - name: items
+        label: Kit items
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Item name, type: string, required: true }
+          - { name: description, label: Description, type: text }
+          - { name: image, label: Image, type: image }
+          - { name: imageAlt, label: Image alt text, type: string }
+          - { name: published, label: Show on website, type: boolean }
+          - { name: order, label: Order, type: number }
+
+  - name: fenland10_details
+    label: Fenland 10 details
+    type: file
+    path: content/pages/fenland-10-details.json
+    format: json
+    fields:
+      - { name: title, label: Race page title, type: string }
+      - { name: summary, label: Summary, type: text }
+      - name: details
+        label: Race details
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: value, label: Value, type: string }
+          - { name: published, label: Show on website, type: boolean }
+          - { name: order, label: Order, type: number }
+      - name: links
+        label: Race links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: href, label: URL, type: string }
+          - { name: note, label: Note, type: string }
+          - { name: published, label: Show on website, type: boolean }
+          - { name: order, label: Order, type: number }
+
+  - name: sponsors
+    label: Sponsors / partners
+    type: file
+    path: content/sponsors/sponsors.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Name, type: string, required: true }
+      - { name: logo, label: Logo, type: image }
+      - { name: logoAlt, label: Logo alt text, type: string }
+      - { name: websiteLink, label: Website link, type: string }
+      - { name: description, label: Description, type: text }
+      - { name: published, label: Show on website, type: boolean }
+      - { name: order, label: Order, type: number }

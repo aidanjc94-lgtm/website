@@ -1,0 +1,32 @@
+{
+  "pageKey": "couch-to-5k",
+  "title": "Couch to 5K",
+  "navigationLabel": "Couch to 5K",
+  "href": "/couch-to-5k/",
+  "status": "live",
+  "showInHeader": true,
+  "showInFooter": true,
+  "showOnHomepage": true,
+  "navigationOrder": 40,
+  "startDate": "",
+  "endDate": "",
+  "closedMessage": "This Couch to 5K course is currently closed. TODO: add the approved message for runners after a course has finished.",
+  "archiveMessage": "This Couch to 5K information is kept for reference. TODO: add approved archive wording if needed.",
+  "seoNoIndex": false,
+  "courseStartDate": "",
+  "courseEndDate": "",
+  "nextCourseMessage": "TODO: add details when the next Couch to 5K course is confirmed.",
+  "registerInterestLabel": "Ask about Couch to 5K",
+  "registerInterestMessage": "Contact/register interest wording TODO: confirm the approved route for enquiries.",
+  "homepagePromo": {
+    "eyebrow": "Beginner pathway",
+    "title": "Couch to 5K",
+    "text": "Fenland Running Club has a Couch to 5K programme. The next start date and sign-up route are TODO items for club confirmation.",
+    "linkLabel": "Learn more",
+    "icon": "👟"
+  },
+  "heroEyebrow": "Beginner running",
+  "heroTitle": "Couch to 5K with Fenland Running Club",
+  "heroIntro": "The club has a Couch to 5K programme to support beginner runners. Dates, capacity and sign-up details need club confirmation before launch.",
+  "alert": "Add the next start date, registration link, lead volunteers, meeting point and eligibility notes."
+}

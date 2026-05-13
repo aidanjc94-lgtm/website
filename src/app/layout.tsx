@@ -6,10 +6,10 @@ import { site } from '@/content/site';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Fenland Running Club',
+    default: site.defaultSeoTitle,
     template: '%s | Fenland Running Club',
   },
-  description: site.description,
+  description: site.defaultSeoDescription,
   metadataBase: new URL('https://fenland-running-club.github.io'),
 };
 

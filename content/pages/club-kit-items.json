@@ -1,0 +1,10 @@
+{
+  "intro": "Club kit helps members feel part of the team at races, relays and league fixtures. Current kit supplier and ordering details need confirming before launch.",
+  "orderInformation": "TODO: add the approved ordering process, contact route and expected lead times.",
+  "contactOrSupplierNote": "TODO: confirm supplier, prices, size guide, ordering process, lead times and any member-only kit rules.",
+  "items": [
+    { "name": "Club vest", "description": "TODO: confirm design, sizes and price.", "image": "", "imageAlt": "", "published": true, "order": 10 },
+    { "name": "Training top", "description": "TODO: confirm availability.", "image": "", "imageAlt": "", "published": true, "order": 20 },
+    { "name": "Race-day accessories", "description": "TODO: confirm whether any accessories are available.", "image": "", "imageAlt": "", "published": true, "order": 30 }
+  ]
+}

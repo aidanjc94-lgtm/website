@@ -1,0 +1,27 @@
+{
+  "pageKey": "welfare-policies",
+  "title": "Welfare & Policies",
+  "navigationLabel": "Welfare & policies",
+  "href": "/welfare-policies/",
+  "status": "live",
+  "showInHeader": true,
+  "showInFooter": true,
+  "showOnHomepage": false,
+  "navigationOrder": 80,
+  "startDate": "",
+  "endDate": "",
+  "closedMessage": "",
+  "archiveMessage": "",
+  "seoNoIndex": false,
+  "homepagePromo": {
+    "eyebrow": "",
+    "title": "",
+    "text": "",
+    "linkLabel": "",
+    "icon": ""
+  },
+  "heroEyebrow": "Welfare and policies",
+  "heroTitle": "Safe, supportive club running",
+  "heroIntro": "Welfare and policy information should help runners, parents of adult vulnerable runners where relevant, volunteers and partners understand how the club keeps people safe.",
+  "alert": "Add approved policy documents, review dates, welfare contact route and safeguarding information before launch."
+}
