@@ -6,7 +6,7 @@ import { SectionHeader } from '@/components/sections/SectionHeader';
 import { AlertBanner } from '@/components/ui/AlertBanner';
 import { CTAButton } from '@/components/ui/CTAButton';
 import { events } from '@/content/events';
-import { featuredNewsPosts, newsPosts } from '@/content/news';
+import { newsPosts } from '@/content/news';
 import { getPageByKey, shouldShowOnHomepage } from '@/lib/pageVisibility';
 
 export default function HomePage() {

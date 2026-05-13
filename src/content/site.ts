@@ -25,5 +25,3 @@ export const site = {
   secondaryCtaHref: siteSettings.secondaryCtaHref,
   socialLinks: socialLinksData.filter((link) => link.published).sort((a, b) => a.order - b.order),
 };
-
-export const contact = contactSettings;

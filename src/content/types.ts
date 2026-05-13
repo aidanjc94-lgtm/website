@@ -65,9 +65,7 @@ export type Person = {
   note?: string;
   image?: string;
   imageAlt?: string;
-  email?: string;
   published?: boolean;
-  order?: number;
   isPlaceholder?: boolean;
 };
 
@@ -77,9 +75,7 @@ export type NormalisedPerson = {
   description: string;
   image?: string;
   imageAlt?: string;
-  email?: string;
   published: boolean;
-  order: number;
 };
 
 export type Fenland10Details = {

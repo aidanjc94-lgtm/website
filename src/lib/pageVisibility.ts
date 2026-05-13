@@ -1,15 +1,4 @@
-import navigationData from '../../content/settings/navigation.json';
-import homePage from '../../content/pages/home.json';
-import aboutPage from '../../content/pages/about.json';
-import joinPage from '../../content/pages/join.json';
-import trainingPage from '../../content/pages/training.json';
-import couchTo5KPage from '../../content/pages/couch-to-5k.json';
-import fenland10Page from '../../content/pages/fenland-10.json';
-import calendarPage from '../../content/pages/calendar.json';
-import newsPage from '../../content/pages/news.json';
-import welfarePoliciesPage from '../../content/pages/welfare-policies.json';
-import clubKitPage from '../../content/pages/club-kit.json';
-import contactPage from '../../content/pages/contact.json';
+import pagesData from '@/content/pages.json';
 
 export type PageStatus = 'live' | 'closed' | 'hidden' | 'archived';
 
@@ -42,33 +31,15 @@ export type PageLifecycle = {
   registerInterestLabel?: string;
   registerInterestMessage?: string;
   homepagePromo?: HomepagePromo;
-  [key: string]: unknown;
 };
 
 export type NavigationItem = {
   label: string;
   href: string;
-  pageKey?: string;
-  showInHeader: boolean;
-  showInFooter: boolean;
-  order: number;
+  pageKey: string;
 };
 
-export const pages = [
-  homePage,
-  aboutPage,
-  joinPage,
-  trainingPage,
-  couchTo5KPage,
-  fenland10Page,
-  calendarPage,
-  newsPage,
-  welfarePoliciesPage,
-  clubKitPage,
-  contactPage,
-] as PageLifecycle[];
-
-export const navigationItems = navigationData as NavigationItem[];
+export const pages = pagesData as PageLifecycle[];
 
 function getBuildDate(): Date {
   const configuredDate = process.env.SITE_BUILD_DATE;
@@ -82,7 +53,10 @@ function getBuildDate(): Date {
 }
 
 function parseDate(value?: string): Date | null {
-  if (!value) return null;
+  if (!value) {
+    return null;
+  }
+
   const date = new Date(`${value}T00:00:00Z`);
   return Number.isNaN(date.getTime()) ? null : date;
 }
@@ -93,16 +67,28 @@ function getComparableBuildDate(): Date {
 }
 
 export function getEffectiveStatus(page: PageLifecycle): PageStatus {
-  if (page.status !== 'live') return page.status;
+  if (page.status !== 'live') {
+    return page.status;
+  }
+
   const buildDate = getComparableBuildDate();
   const endDate = parseDate(page.endDate || page.courseEndDate);
-  return endDate && buildDate > endDate ? 'closed' : 'live';
+
+  if (endDate && buildDate > endDate) {
+    return 'closed';
+  }
+
+  return 'live';
 }
 
 export function isPageLive(page: PageLifecycle): boolean {
-  if (getEffectiveStatus(page) !== 'live') return false;
+  if (getEffectiveStatus(page) !== 'live') {
+    return false;
+  }
+
   const buildDate = getComparableBuildDate();
   const startDate = parseDate(page.startDate || page.courseStartDate);
+
   return !startDate || buildDate >= startDate;
 }
 
@@ -136,26 +122,31 @@ export function shouldNoIndexPage(page: PageLifecycle): boolean {
 
 export function getPageByKey(pageKey: string): PageLifecycle {
   const page = pages.find((item) => item.pageKey === pageKey);
-  if (!page) throw new Error(`Missing page content for pageKey: ${pageKey}`);
+
+  if (!page) {
+    throw new Error(`Missing page content for pageKey: ${pageKey}`);
+  }
+
   return page;
 }
 
-function navigationPageIsVisible(item: NavigationItem, location: 'header' | 'footer') {
-  if (!item.pageKey) return true;
-  const page = getPageByKey(item.pageKey);
-  return location === 'header' ? shouldShowInHeader(page) : shouldShowInFooter(page);
+export function getVisibleNavigationItems(
+  pageList: PageLifecycle[],
+  location: 'header' | 'footer' | 'homepage' = 'header',
+): NavigationItem[] {
+  const predicate =
+    location === 'footer'
+      ? shouldShowInFooter
+      : location === 'homepage'
+        ? shouldShowOnHomepage
+        : shouldShowInHeader;
+
+  return pageList
+    .filter(predicate)
+    .sort((a, b) => a.navigationOrder - b.navigationOrder)
+    .map((page) => ({ label: page.navigationLabel, href: page.href, pageKey: page.pageKey }));
 }
 
-export function getVisibleNavigationItems(location: 'header' | 'footer' = 'header') {
-  const toggle = location === 'header' ? 'showInHeader' : 'showInFooter';
-
-  return navigationItems
-    .filter((item) => item[toggle])
-    .filter((item) => navigationPageIsVisible(item, location))
-    .sort((a, b) => a.order - b.order)
-    .map((item) => ({ label: item.label, href: item.href, pageKey: item.pageKey || item.href }));
-}
-
-export const headerNavigation = getVisibleNavigationItems('header');
-export const footerNavigation = getVisibleNavigationItems('footer');
+export const headerNavigation = getVisibleNavigationItems(pages, 'header');
+export const footerNavigation = getVisibleNavigationItems(pages, 'footer');
 export const homepagePages = pages.filter(shouldShowOnHomepage).sort((a, b) => a.navigationOrder - b.navigationOrder);

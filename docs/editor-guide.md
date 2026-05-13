@@ -1,73 +1,72 @@
 # Editor guide
 
-Pages CMS is the routine editing place for Fenland Running Club website content. Do not add private member information unless the committee has agreed it is public.
+## How to hide or close a page
 
-## Main CMS menu items
+Pages and menu links are managed in Pages CMS under **Pages and navigation**. Each page has simple controls for whether it is live, shown in the main menu, shown in the footer, or promoted on the homepage.
 
-- **Club management / Site settings**: club name, description, SEO defaults, logo and main buttons.
-- **Club management / Contact details**: public email addresses, venue, map link and Contact page notes.
-- **Club management / Social links**: Facebook, Instagram, Strava, parkrun and other public links.
-- **Club management / Navigation**: top menu and footer labels, links, show/hide switches and order.
-- **Page content**: fixed page titles, lifecycle status, homepage promotion and key page messages.
-- **News**: create, edit, feature or unpublish news posts.
-- **Events and calendar**: add, edit, feature or unpublish calendar items.
-- **People**: Committee members, Coaches and Run leaders.
-- **FAQs**: questions and answers used around the site.
-- **Policies**: policy summaries and document links/files.
-- **Club kit**: kit items, ordering notes and supplier/contact notes.
-- **Fenland 10 details**: race details and race links.
-- **Sponsors / partners**: sponsor/partner records if the club decides to publish them.
+### What the page status means
 
-## Update contact details
+- **Live**: the page is public and can appear in menus or on the homepage if those switches are turned on.
+- **Closed**: use this when a course or campaign has finished. The page can still explain what has happened, but it is removed from the main menu and homepage.
+- **Hidden**: use this only when a page should not look publicly available. On the static site, a hidden page may still be generated, but it shows a simple hidden message and asks search engines not to index it.
+- **Archived**: use this for reference information that should not be promoted as current.
 
-Open **Club management / Contact details**, update only public contact methods, then save. Use role or public inboxes where possible. Do not publish private personal email addresses unless explicitly approved.
+### Remove Couch to 5K from the main menu
 
-## Add a news post
+1. Open **Pages and navigation** in Pages CMS.
+2. Choose **Couch to 5K**.
+3. Turn off **Show in main menu**.
+4. Save the change and wait for the website rebuild to finish.
 
-1. Open **News**.
-2. Create a new post.
-3. Add title, slug, date, category, summary and body content.
-4. Add an image and image alt text if used.
-5. Turn on **Show on website**.
-6. Turn on **Feature on homepage** only for important current updates.
+This removes the Couch to 5K link from the top navigation without deleting the page.
 
-To unpublish a news post, open the post and turn off **Show on website**. The post remains in the CMS but is removed from the public website after rebuild.
+### Close Couch to 5K after the course ends
 
-## Add an event
+1. Open **Pages and navigation**.
+2. Choose **Couch to 5K**.
+3. Set **Page status** to **closed**.
+4. Check **Message to show when closed** says what visitors should know.
+5. Check **Next course message** explains what happens next, using TODO wording if details are not confirmed.
+6. Save the change.
 
-Open **Events and calendar**, add an item with title, date, time, location, category and summary, then turn on **Show on website**. Use **Feature on homepage** for the next or most important events.
+Closed Couch to 5K pages are removed from the main menu and homepage promotional areas. The page itself shows the closed message instead of looking like an active course.
 
-## Update people
+### Reopen Couch to 5K for a new course
 
-Use the **People** screens for Committee members, Coaches and Run leaders. Each record has the same fields: name, role, description, image, imageAlt, email, published and order.
+1. Open **Pages and navigation**.
+2. Choose **Couch to 5K**.
+3. Set **Page status** to **live**.
+4. Add the new **Course start date** and **Course end date** if they are known.
+5. Turn on **Show in main menu** if the page should appear in the top navigation.
+6. Turn on **Show on homepage** if the homepage card should appear.
+7. Update the contact/register interest wording.
+8. Save the change.
 
-If a name is left blank, the public website shows **TODO: Name required**. Only add photos, email addresses or descriptions that the person has approved for publication.
+### Hide a page completely
 
-## Hide or close a page
+1. Open **Pages and navigation**.
+2. Choose the page.
+3. Set **Page status** to **hidden**.
+4. Save the change.
 
-Open the relevant **Page content** entry.
+Hidden pages are removed from navigation and homepage promotions. Because the website is a static export for GitHub Pages, the page route may still exist in the generated files, but it displays a simple hidden page rather than normal active content.
 
-- **Live**: public and can appear in menus or homepage promotions.
-- **Closed**: useful when a course or campaign has finished; it is removed from the main menu/homepage and can show a closed message.
-- **Hidden**: removes normal promotion and shows hidden/noindex behaviour where static export allows.
-- **Archived**: reference content that should not be promoted as current.
+### Remove a homepage promotional card
 
-### Couch to 5K
+1. Open **Pages and navigation**.
+2. Choose the page, for example **Couch to 5K** or **Fenland 10**.
+3. Turn off **Show on homepage**.
+4. Save the change.
 
-Use **Page content / Couch to 5K** to update status, course dates, closed message, next-course message and homepage promotion. Set status to **closed** after a course finishes. Set it back to **live** and update the dates when a new course is ready.
+### Manually trigger a rebuild
 
-### Fenland 10
+Date-based changes, such as a course end date passing, appear after the site rebuilds. The deployment workflow also runs every morning automatically.
 
-Use **Fenland 10 details** for race details and links. Use **Page content / Fenland 10** for page visibility, homepage promotion and lifecycle status.
+If a date-based change has not appeared yet:
 
-## Upload images and documents
+1. Go to the repository on GitHub.
+2. Open **Actions**.
+3. Choose **Build and deploy static site**.
+4. Select **Run workflow**.
 
-Use the media picker in Pages CMS. Images are stored under `public/uploads/images`; documents are stored under `public/uploads/documents`. Always add meaningful alt text for images that communicate information.
-
-## Update policies
-
-Open **Policies**, update the title, summary, category, last reviewed date and document link/file. Turn off **Show on website** for obsolete policies rather than deleting them immediately.
-
-## Manually trigger a rebuild
-
-Date-based changes appear after the site rebuilds. If needed, go to GitHub **Actions**, choose **Build and deploy static site**, then **Run workflow**. Scheduled workflows use UTC.
+GitHub scheduled workflows use UTC, so the automatic morning rebuild time is a UTC time, not necessarily local UK clock time during summer.

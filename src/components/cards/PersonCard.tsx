@@ -16,7 +16,6 @@ export function PersonCard({ person }: { person: NormalisedPerson }) {
       <h4 className="text-lg font-black text-fenland-dark">{person.name}</h4>
       <p className="mt-1 font-bold text-fenland-purple">{person.role}</p>
       {person.description && <p className="mt-2 text-sm text-fenland-dark/70">{person.description}</p>}
-      {person.email && <a className="mt-3 inline-flex text-sm font-bold text-fenland-purple underline" href={`mailto:${person.email}`}>Email</a>}
     </article>
   );
 }
