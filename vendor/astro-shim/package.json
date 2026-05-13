@@ -1,0 +1,8 @@
+{
+  "name": "astro",
+  "version": "5.13.8",
+  "type": "module",
+  "bin": {
+    "astro": "bin/astro.js"
+  }
+}
