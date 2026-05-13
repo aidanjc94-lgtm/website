@@ -1,0 +1,7 @@
+[
+  { "title": "Safeguarding policy", "summary": "TODO: add the current approved safeguarding policy document or page.", "documentLink": "", "policyCategory": "Safeguarding", "lastReviewedDate": "", "published": true, "order": 10 },
+  { "title": "Code of conduct", "summary": "TODO: add the current member and runner code of conduct.", "documentLink": "", "policyCategory": "Conduct", "lastReviewedDate": "", "published": true, "order": 20 },
+  { "title": "Health and safety policy", "summary": "TODO: add the current health and safety policy and review date.", "documentLink": "", "policyCategory": "Health and safety", "lastReviewedDate": "", "published": true, "order": 30 },
+  { "title": "Inclusion policy", "summary": "TODO: add the current inclusion policy.", "documentLink": "", "policyCategory": "Inclusion", "lastReviewedDate": "", "published": true, "order": 40 },
+  { "title": "Privacy notice", "summary": "TODO: add the club privacy notice and data contact details.", "documentLink": "", "policyCategory": "Privacy", "lastReviewedDate": "", "published": true, "order": 50 }
+]

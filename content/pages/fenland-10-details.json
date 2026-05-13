@@ -1,0 +1,14 @@
+{
+  "title": "Fenland 10",
+  "summary": "Fenland Running Club hosts the Fenland 10. This page is ready for approved race information and entry links.",
+  "details": [
+    { "label": "Race date", "value": "TODO: confirm date", "order": 10, "published": true },
+    { "label": "Venue", "value": "TODO: confirm venue", "order": 20, "published": true },
+    { "label": "Distance", "value": "10 miles — TODO: confirm route and measurement details", "order": 30, "published": true },
+    { "label": "Entries", "value": "TODO: add entry provider and opening date", "order": 40, "published": true },
+    { "label": "Race licence", "value": "TODO: add licence details if applicable", "order": 50, "published": true }
+  ],
+  "links": [
+    { "label": "Entry link", "href": "TODO: add official Fenland 10 entry URL", "note": "Placeholder only", "order": 10, "published": true }
+  ]
+}

@@ -1,17 +1,8 @@
+import fenland10Data from '../../content/pages/fenland-10-details.json';
 import type { Fenland10Details } from './types';
 
 export const fenland10: Fenland10Details = {
-  title: 'Fenland 10',
-  summary:
-    'Fenland Running Club hosts the Fenland 10. This page is ready for approved race information and entry links.',
-  details: [
-    { label: 'Race date', value: 'TODO: confirm date' },
-    { label: 'Venue', value: 'TODO: confirm venue' },
-    { label: 'Distance', value: '10 miles — TODO: confirm route and measurement details' },
-    { label: 'Entries', value: 'TODO: add entry provider and opening date' },
-    { label: 'Race licence', value: 'TODO: add licence details if applicable' },
-  ],
-  links: [
-    { label: 'Entry link', href: 'TODO: add official Fenland 10 entry URL', note: 'Placeholder only' },
-  ],
+  ...fenland10Data,
+  details: fenland10Data.details.filter((detail) => detail.published).sort((a, b) => a.order - b.order),
+  links: fenland10Data.links.filter((link) => link.published).sort((a, b) => a.order - b.order),
 };

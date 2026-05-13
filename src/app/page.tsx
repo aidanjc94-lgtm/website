@@ -10,7 +10,8 @@ import { newsPosts } from '@/content/news';
 import { getPageByKey, shouldShowOnHomepage } from '@/lib/pageVisibility';
 
 export default function HomePage() {
-  const featuredNews = newsPosts.slice(0, 3);
+  const featuredNews = (featuredNewsPosts.length > 0 ? featuredNewsPosts : newsPosts).slice(0, 3);
+  const homePage = getPageByKey('home');
   const featuredEvents = events.slice(0, 3);
   const homepageFeatureKeys = ['couch-to-5k', 'training', 'fenland-10', 'about'];
   const homepageFeaturePages = homepageFeatureKeys.map(getPageByKey).filter(shouldShowOnHomepage);
@@ -23,7 +24,7 @@ export default function HomePage() {
       <Hero />
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Find your pace" title="A club for different running journeys" intro="Whether you are building confidence, returning to running, training for races or looking for a friendly group, Fenland Running Club is here to help you enjoy running." />
+          <SectionHeader eyebrow={String(homePage.sectionEyebrow)} title={String(homePage.sectionTitle)} intro={String(homePage.sectionIntro)} />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {homepageFeaturePages.map((page) => (
               <FeatureCard
@@ -41,7 +42,7 @@ export default function HomePage() {
       <section className="bg-fenland-soft py-16 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
-            <SectionHeader eyebrow="Training" title="Tuesday and Thursday evenings" intro="Club sessions usually start from Wisbech Rugby Club. Final times and session formats should be confirmed by the club before launch." />
+            <SectionHeader eyebrow="Training" title={String(homePage.trainingTitle)} intro={String(homePage.trainingIntro)} />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row"><CTAButton href="/training/">View training</CTAButton><CTAButton href="/join/" variant="outline">How to join</CTAButton></div>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -69,7 +70,7 @@ export default function HomePage() {
       </section>
       <section className="bg-fenland-soft py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Latest" title="Club updates" intro="Editable news posts are kept in simple content files so volunteers can update them through pull requests." />
+          <SectionHeader eyebrow={String(homePage.newsEyebrow)} title={String(homePage.newsTitle)} intro={String(homePage.newsIntro)} />
           <div className="mt-10 grid gap-6 md:grid-cols-3">{featuredNews.map((post) => <NewsCard key={post.slug} post={post} />)}</div>
           <div className="mt-10"><AlertBanner>Replace placeholder updates with approved club news before public launch.</AlertBanner></div>
         </div>

@@ -11,5 +11,5 @@ const pageContent = getPageByKey('news');
 export const metadata: Metadata = { title: pageContent.title };
 
 export default function NewsPage() {
-  return <><Breadcrumbs crumbs={[{ label: 'News' }]} /><PageHero eyebrow="News" title="Club updates and announcements" intro="News posts are editable content entries. Current posts are clearly marked placeholders and should be replaced with approved club updates." /><section className="py-16 sm:py-24"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><AlertBanner>Replace placeholder news with real approved updates before launch.</AlertBanner><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{newsPosts.map((post) => <NewsCard key={post.slug} post={post} />)}</div></div></section></>;
+  return <><Breadcrumbs crumbs={[{ label: 'News' }]} /><PageHero eyebrow={String(pageContent.heroEyebrow)} title={String(pageContent.heroTitle)} intro={String(pageContent.heroIntro)} /><section className="py-16 sm:py-24"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><AlertBanner>{String(pageContent.alert)}</AlertBanner><div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{newsPosts.map((post) => <NewsCard key={post.slug} post={post} />)}</div></div></section></>;
 }

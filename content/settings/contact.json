@@ -1,0 +1,17 @@
+{
+  "generalEnquiryEmail": "TODO@example.com",
+  "membershipEnquiryEmail": "TODO@example.com",
+  "welfareContactEmail": "TODO@example.com",
+  "fenland10EnquiryEmail": "TODO@example.com",
+  "venueName": "Wisbech Rugby Club",
+  "venueAddress": "TODO: add approved address",
+  "locationSummary": "Wisbech, Cambridgeshire",
+  "mapLink": "TODO: add approved map link",
+  "what3words": "TODO: add what3words if used",
+  "contactPageIntro": "Use the details below to check sessions, ask about joining, enquire about Couch to 5K or confirm Fenland 10 information.",
+  "contactNotes": "TODO: replace with approved public club email address.",
+  "meetingPointNotes": "TODO: add approved address, map link, what3words and parking/accessibility notes.",
+  "publishedContactMethods": [
+    { "label": "Email", "value": "TODO@example.com", "href": "mailto:TODO@example.com", "published": true, "order": 10 }
+  ]
+}

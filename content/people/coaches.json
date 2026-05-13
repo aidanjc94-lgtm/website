@@ -1,0 +1,5 @@
+[
+  { "name": "Melissa Milham", "role": "Coaching coordinator", "description": "Add approved coach details.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 10 },
+  { "name": "Tom Richards", "role": "Coach", "description": "Add approved coach details.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 20 },
+  { "name": "Jac Richards", "role": "Coach", "description": "Add approved coach details.", "image": "", "imageAlt": "", "email": "", "published": true, "order": 30 }
+]

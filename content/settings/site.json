@@ -1,0 +1,12 @@
+{
+  "clubName": "Fenland Running Club",
+  "shortName": "FRC",
+  "shortDescription": "A friendly adult running club based in Wisbech, Cambridgeshire, helping runners of different abilities enjoy running together.",
+  "defaultSeoTitle": "Fenland Running Club",
+  "defaultSeoDescription": "A friendly adult running club based in Wisbech, Cambridgeshire, helping runners of different abilities enjoy running together.",
+  "logoPath": "/images/OIP.png",
+  "primaryCtaLabel": "Join us",
+  "primaryCtaHref": "/join/",
+  "secondaryCtaLabel": "View training",
+  "secondaryCtaHref": "/training/"
+}

@@ -1,0 +1,12 @@
+[
+  { "label": "About", "href": "/about/", "pageKey": "about", "showInHeader": true, "showInFooter": true, "order": 10 },
+  { "label": "Join us", "href": "/join/", "pageKey": "join", "showInHeader": true, "showInFooter": true, "order": 20 },
+  { "label": "Training", "href": "/training/", "pageKey": "training", "showInHeader": true, "showInFooter": true, "order": 30 },
+  { "label": "Couch to 5K", "href": "/couch-to-5k/", "pageKey": "couch-to-5k", "showInHeader": true, "showInFooter": true, "order": 40 },
+  { "label": "Fenland 10", "href": "/fenland-10/", "pageKey": "fenland-10", "showInHeader": true, "showInFooter": true, "order": 50 },
+  { "label": "Calendar", "href": "/calendar/", "pageKey": "calendar", "showInHeader": true, "showInFooter": true, "order": 60 },
+  { "label": "News", "href": "/news/", "pageKey": "news", "showInHeader": true, "showInFooter": true, "order": 70 },
+  { "label": "Welfare & policies", "href": "/welfare-policies/", "pageKey": "welfare-policies", "showInHeader": true, "showInFooter": true, "order": 80 },
+  { "label": "Club kit", "href": "/club-kit/", "pageKey": "club-kit", "showInHeader": true, "showInFooter": true, "order": 90 },
+  { "label": "Contact", "href": "/contact/", "pageKey": "contact", "showInHeader": true, "showInFooter": true, "order": 100 }
+]

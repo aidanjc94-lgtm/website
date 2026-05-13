@@ -1,0 +1,28 @@
+{
+  "pageKey": "about",
+  "title": "About the Club",
+  "navigationLabel": "About",
+  "href": "/about/",
+  "status": "live",
+  "showInHeader": true,
+  "showInFooter": true,
+  "showOnHomepage": true,
+  "navigationOrder": 10,
+  "startDate": "",
+  "endDate": "",
+  "closedMessage": "",
+  "archiveMessage": "",
+  "seoNoIndex": false,
+  "homepagePromo": {
+    "eyebrow": "Community",
+    "title": "Community",
+    "text": "Friendly, inclusive and welcoming, with qualified coaches and run leaders supporting club activity.",
+    "linkLabel": "About us",
+    "icon": "🤝"
+  },
+  "heroEyebrow": "About the club",
+  "heroTitle": "Friendly adult running in Wisbech",
+  "heroIntro": "Fenland Running Club is based in Wisbech, Cambridgeshire. The club is welcoming, community-focused and aims to help and encourage runners regardless of ability.",
+  "peopleTitle": "People behind the club",
+  "peopleIntro": "Placeholder committee, coach and run leader records are included so the club can add approved details later."
+}

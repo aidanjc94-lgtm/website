@@ -1,0 +1,6 @@
+[
+  { "label": "Facebook", "href": "TODO: add official Facebook URL", "published": false, "order": 10 },
+  { "label": "Instagram", "href": "TODO: add official Instagram URL", "published": false, "order": 20 },
+  { "label": "Strava", "href": "TODO: add official Strava URL if used", "published": false, "order": 30 },
+  { "label": "parkrun", "href": "TODO: add parkrun link if used", "published": false, "order": 40 }
+]
