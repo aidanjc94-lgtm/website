@@ -1,0 +1,134 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: pages
+    label: Pages and navigation
+    type: file
+    path: src/content/pages.json
+    format: json
+    list: true
+    fields:
+      - name: pageKey
+        label: Page key
+        type: string
+        required: true
+        description: Stable internal key. Do not change unless a developer asks you to.
+      - name: title
+        label: Page title
+        type: string
+        required: true
+        description: Title used for browser tabs and page management.
+      - name: navigationLabel
+        label: Navigation label
+        type: string
+        required: true
+        description: Short label shown in menus and buttons.
+      - name: href
+        label: Page address
+        type: string
+        required: true
+        description: The page URL. Do not change unless a developer asks you to.
+      - name: status
+        label: Page status
+        type: select
+        required: true
+        options:
+          values:
+            - live
+            - closed
+            - hidden
+            - archived
+        description: Use Closed when a course or campaign has finished. Use Hidden only when the page should not be publicly available.
+      - name: showInHeader
+        label: Show in main menu
+        type: boolean
+        description: Turn this off to remove the page from the top navigation without deleting the page.
+      - name: showInFooter
+        label: Show in footer
+        type: boolean
+        description: Turn this off to remove the page from the footer links.
+      - name: showOnHomepage
+        label: Show on homepage
+        type: boolean
+        description: Turn this off to remove the page's promotional card or spotlight from the homepage.
+      - name: navigationOrder
+        label: Navigation order
+        type: number
+        description: Lower numbers appear earlier in menus.
+      - name: startDate
+        label: Start date
+        type: date
+        required: false
+        description: Optional date when the page can start appearing in menus and homepage promotions.
+      - name: endDate
+        label: End date
+        type: date
+        required: false
+        description: Optional date after which a live page is treated as closed at the next site rebuild.
+      - name: closedMessage
+        label: Message to show when closed
+        type: text
+        required: false
+        description: Message displayed on supported pages when the status is Closed or the end date has passed.
+      - name: archiveMessage
+        label: Archive message
+        type: text
+        required: false
+        description: Message displayed on supported pages kept online for reference.
+      - name: seoNoIndex
+        label: Ask search engines not to index
+        type: boolean
+        description: Turn on for pages that should not appear in search results.
+      - name: courseStartDate
+        label: Course start date
+        type: date
+        required: false
+        description: Couch to 5K only. The first course date, used for date-based visibility.
+      - name: courseEndDate
+        label: Course end date
+        type: date
+        required: false
+        description: Couch to 5K only. After this date, the course is treated as closed at the next rebuild.
+      - name: nextCourseMessage
+        label: Next course message
+        type: text
+        required: false
+        description: Couch to 5K only. Explain what runners should do while waiting for the next course.
+      - name: registerInterestLabel
+        label: Register interest button label
+        type: string
+        required: false
+        description: Couch to 5K only. Short wording for the contact or register-interest button.
+      - name: registerInterestMessage
+        label: Contact/register interest wording
+        type: text
+        required: false
+        description: Couch to 5K only. Tell visitors how to ask about or register interest in the course.
+      - name: homepagePromo
+        label: Homepage promotional card
+        type: object
+        description: Text used when Show on homepage is turned on.
+        fields:
+          - name: eyebrow
+            label: Small heading
+            type: string
+            required: false
+          - name: title
+            label: Card title
+            type: string
+            required: false
+          - name: text
+            label: Card text
+            type: text
+            required: false
+          - name: linkLabel
+            label: Link label
+            type: string
+            required: false
+          - name: icon
+            label: Icon
+            type: string
+            required: false
+            description: Optional emoji used on the small homepage feature card.
