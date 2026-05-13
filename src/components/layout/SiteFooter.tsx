@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { navigation, site } from '@/content/site';
+import { site } from '@/content/site';
+import { footerNavigation } from '@/lib/pageVisibility';
 
 export function SiteFooter() {
   return (
@@ -13,7 +14,7 @@ export function SiteFooter() {
         <div>
           <h3 className="font-black">Explore</h3>
           <div className="mt-4 grid grid-cols-2 gap-2">
-            {navigation.map((item) => (
+            {footerNavigation.map((item) => (
               <Link className="rounded-lg py-1 text-sm font-semibold text-white/75 hover:text-white focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-fenland-red" href={item.href} key={item.href}>{item.label}</Link>
             ))}
           </div>

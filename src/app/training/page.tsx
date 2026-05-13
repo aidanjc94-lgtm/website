@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getPageByKey } from '@/lib/pageVisibility';
 import { EventCard } from '@/components/cards/EventCard';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { PageHero } from '@/components/sections/PageHero';
@@ -6,7 +7,9 @@ import { SectionHeader } from '@/components/sections/SectionHeader';
 import { AlertBanner } from '@/components/ui/AlertBanner';
 import { events } from '@/content/events';
 
-export const metadata: Metadata = { title: 'Training' };
+const pageContent = getPageByKey('training');
+
+export const metadata: Metadata = { title: pageContent.title };
 
 export default function TrainingPage() {
   const clubNights = events.filter((event) => event.category === 'Club night');

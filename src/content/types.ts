@@ -40,10 +40,23 @@ export type FAQ = {
 };
 
 export type Person = {
+  name?: string;
+  role: string;
+  description?: string;
+  note?: string;
+  image?: string;
+  imageAlt?: string;
+  published?: boolean;
+  isPlaceholder?: boolean;
+};
+
+export type NormalisedPerson = {
   name: string;
   role: string;
-  note?: string;
-  isPlaceholder?: boolean;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  published: boolean;
 };
 
 export type Fenland10Details = {
