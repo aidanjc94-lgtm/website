@@ -1,0 +1,472 @@
+media:
+  - name: images
+    label: Images
+    input: public/images
+    output: /images
+    extensions: [jpg, jpeg, png, webp, svg]
+    categories: [image]
+    rename: safe
+  - name: documents
+    label: Documents
+    input: public/documents
+    output: /documents
+    categories: [document]
+    rename: safe
+
+components:
+  image_with_alt:
+    type: object
+    label: Image
+    fields:
+      - name: image
+        label: Image
+        type: image
+        options:
+          media: images
+      - name: imageAlt
+        label: Image alt text
+        type: text
+        required: true
+        description: Describe the image for people using screen readers. Leave the image empty if there is no image.
+  published:
+    type: boolean
+    label: Published
+    required: true
+  person_fields:
+    type: object
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+        description: Use TODO if the person has not approved publication yet.
+      - name: role
+        label: Role or title
+        type: string
+        required: true
+      - name: note
+        label: Short description or TODO
+        type: text
+        required: true
+      - name: published
+        component: published
+
+content:
+  - name: news
+    label: News posts
+    type: collection
+    path: content/news
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9-]+$"
+          message: "Use lowercase letters, numbers and hyphens only."
+      - name: date
+        label: Publication date
+        type: date
+        required: true
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+      - name: category
+        label: Category
+        type: select
+        required: true
+        options:
+          values: [Club news, Training, Fenland 10, Couch to 5K, Race report, TODO]
+      - name: featured
+        label: Feature on homepage
+        type: boolean
+      - name: published
+        component: published
+      - name: image
+        label: Image
+        type: image
+        options:
+          media: images
+      - name: imageAlt
+        label: Image alt text
+        type: text
+        required: true
+        description: Required when an image is used. Write TODO if no image has been chosen yet.
+      - name: body
+        label: Body
+        type: rich-text
+        required: true
+  - name: events
+    label: Events and calendar
+    type: collection
+    path: content/events
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: dateLabel
+        label: Date label
+        type: string
+        required: true
+      - name: timeLabel
+        label: Time label
+        type: string
+      - name: location
+        type: string
+        required: true
+      - name: category
+        type: select
+        required: true
+        options:
+          values: [Club night, Race, Relay, Social, Course, TODO]
+      - name: status
+        type: select
+        options:
+          values: [Confirmed, Regular, TODO]
+      - name: summary
+        type: text
+        required: true
+      - name: published
+        component: published
+  - name: people
+    label: People
+    type: group
+    content:
+      - name: committee
+        label: Committee members
+        type: collection
+        path: content/committee
+        fields:
+          - name: name
+            type: string
+            required: true
+          - name: role
+            type: string
+            required: true
+          - name: note
+            label: Short description or TODO
+            type: text
+            required: true
+          - name: published
+            component: published
+      - name: coaches
+        label: Coaches
+        type: collection
+        path: content/coaches
+        fields:
+          - name: name
+            type: string
+            required: true
+          - name: role
+            type: string
+            required: true
+          - name: note
+            label: Short description or TODO
+            type: text
+            required: true
+          - name: published
+            component: published
+      - name: run_leaders
+        label: Run leaders
+        type: collection
+        path: content/run-leaders
+        fields:
+          - name: name
+            type: string
+            required: true
+          - name: role
+            type: string
+            required: true
+          - name: note
+            label: Short description or TODO
+            type: text
+            required: true
+          - name: published
+            component: published
+  - name: faqs
+    label: FAQs
+    type: collection
+    path: content/faqs
+    fields:
+      - name: question
+        type: string
+        required: true
+      - name: answer
+        type: text
+        required: true
+      - name: category
+        type: select
+        required: true
+        options:
+          values: [Joining, Training, Couch to 5K, Fenland 10, Welfare, Kit, TODO]
+      - name: published
+        component: published
+  - name: policies
+    label: Policies
+    type: collection
+    path: content/policies
+    fields:
+      - name: title
+        type: string
+        required: true
+      - name: summary
+        type: text
+        required: true
+      - name: status
+        type: select
+        required: true
+        options:
+          values: [TODO, Current]
+      - name: href
+        label: Document link
+        type: file
+        options:
+          media: documents
+      - name: published
+        component: published
+  - name: settings_group
+    label: Site settings and pages
+    type: group
+    content:
+      - name: site_settings
+        label: Site settings
+        type: file
+        path: content/settings/site.json
+        fields:
+          - name: name
+            type: string
+            required: true
+          - name: shortName
+            label: Short name
+            type: string
+            required: true
+          - name: description
+            type: text
+            required: true
+          - name: email
+            type: string
+            required: true
+          - name: venue
+            type: string
+            required: true
+          - name: location
+            type: string
+            required: true
+          - name: meetingSummary
+            label: Meeting summary
+            type: text
+            required: true
+          - name: logo
+            type: image
+            required: true
+            options:
+              media: images
+          - name: socialLinks
+            label: Social links
+            type: object
+            list: true
+            fields:
+              - name: label
+                type: string
+                required: true
+              - name: href
+                type: string
+                required: true
+      - name: home_content
+        label: Homepage content
+        type: file
+        path: content/pages/home.json
+        fields:
+          - name: eyebrow
+            type: string
+            required: true
+          - name: title
+            type: string
+            required: true
+          - name: intro
+            type: text
+            required: true
+          - name: findYourPaceTitle
+            label: Find your pace title
+            type: string
+            required: true
+          - name: findYourPaceIntro
+            label: Find your pace intro
+            type: text
+            required: true
+          - name: trainingTitle
+            label: Training section title
+            type: string
+            required: true
+          - name: trainingIntro
+            label: Training section intro
+            type: text
+            required: true
+          - name: fenland10Intro
+            label: Fenland 10 intro
+            type: text
+            required: true
+          - name: couchTo5kIntro
+            label: Couch to 5K intro
+            type: text
+            required: true
+      - name: join_content
+        label: Join Us content
+        type: file
+        path: content/pages/join.json
+        fields:
+          - name: eyebrow
+            type: string
+            required: true
+          - name: title
+            type: string
+            required: true
+          - name: intro
+            type: text
+            required: true
+          - name: todo
+            label: TODO note
+            type: text
+            required: true
+      - name: training_content
+        label: Training content
+        type: file
+        path: content/pages/training.json
+        fields:
+          - name: eyebrow
+            type: string
+            required: true
+          - name: title
+            type: string
+            required: true
+          - name: intro
+            type: text
+            required: true
+          - name: todo
+            type: text
+            required: true
+          - name: whatToExpectTitle
+            label: What to expect title
+            type: string
+            required: true
+          - name: whatToExpectIntro
+            label: What to expect intro
+            type: text
+            required: true
+      - name: couch_to_5k_content
+        label: Couch to 5K content
+        type: file
+        path: content/pages/couch-to-5k.json
+        fields:
+          - name: eyebrow
+            type: string
+            required: true
+          - name: title
+            type: string
+            required: true
+          - name: intro
+            type: text
+            required: true
+          - name: todo
+            type: text
+            required: true
+      - name: fenland_10_content
+        label: Fenland 10 content
+        type: file
+        path: content/pages/fenland-10.json
+        fields:
+          - name: title
+            type: string
+            required: true
+          - name: summary
+            type: text
+            required: true
+          - name: details
+            type: object
+            list: true
+            fields:
+              - name: label
+                type: string
+                required: true
+              - name: value
+                type: string
+                required: true
+          - name: links
+            type: object
+            list: true
+            fields:
+              - name: label
+                type: string
+                required: true
+              - name: href
+                type: string
+                required: true
+              - name: note
+                type: string
+          - name: todo
+            type: text
+            required: true
+      - name: contact_content
+        label: Contact details
+        type: file
+        path: content/pages/contact.json
+        fields:
+          - name: eyebrow
+            type: string
+            required: true
+          - name: title
+            type: string
+            required: true
+          - name: intro
+            type: text
+            required: true
+          - name: contactIntro
+            label: Contact intro
+            type: text
+            required: true
+          - name: emailTodo
+            label: Email TODO
+            type: text
+            required: true
+          - name: venueTodo
+            label: Venue TODO
+            type: text
+            required: true
+          - name: formTodo
+            label: Future form TODO
+            type: text
+            required: true
+      - name: club_kit_content
+        label: Club kit content
+        type: file
+        path: content/pages/club-kit.json
+        fields:
+          - name: intro
+            type: text
+            required: true
+          - name: items
+            type: object
+            list: true
+            fields:
+              - name: name
+                type: string
+                required: true
+              - name: note
+                type: text
+                required: true
+          - name: ordering
+            type: text
+            required: true
+          - name: todo
+            type: text
+            required: true
+
+settings:
+  hide: true
+  content:
+    merge: true
