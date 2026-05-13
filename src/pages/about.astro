@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CardGrid from '@components/CardGrid.astro';
+import { people } from '@data/people';
+---
+<BaseLayout title="About">
+  <Hero eyebrow="About the club" title="A supportive club for adult runners." text="Based in Wisbech, Fenland Running Club has been encouraging local runners since 1992." primaryHref="/join/" primaryLabel="Join the club" secondaryHref="/contact/" secondaryLabel="Contact us" />
+  <section class="section section--white"><div class="container prose"><h2>Running with Fenland Running Club</h2><p>The club is proud of its friendly and welcoming atmosphere. Its aim is to help and encourage each person regardless of ability.</p><p>Members run year-round at all distances. The club enters teams in local relay events including Round Norfolk, Hereward and Peterborough Green Wheel Relays, and participates in the Frostbite Friendly League cross-country series.</p><p>Members' successes are celebrated by the whole team, whether that success is a race result, a personal milestone or simply getting out for a run with friends.</p></div></section>
+  <section class="section"><div class="container"><p class="eyebrow">People</p><h2>Committee, coaches and run leaders</h2><p class="section-intro">The current website confirms qualified Coaches and Run Leaders support sessions. Names should be checked with the club before publication.</p><CardGrid items={people.map((person) => ({ title: person.role, text: `${person.name}. ${person.description}`, placeholder: person.name.startsWith('TODO') }))} columns="2" /></div></section>
+</BaseLayout>

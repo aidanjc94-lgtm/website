@@ -1,0 +1,21 @@
+---
+interface Item { title: string; text: string; href?: string; cta?: string; meta?: string; placeholder?: boolean; }
+interface Props { items: Item[]; columns?: '2' | '3' | '4'; }
+const { items, columns = '3' } = Astro.props;
+---
+<div class={`grid grid--${columns}`}>
+  {items.map((item) => item.href ? (
+    <a class={`card card--link ${item.placeholder ? 'placeholder' : ''}`} href={item.href}>
+      {item.meta && <span class="badge">{item.meta}</span>}
+      <h3>{item.title}</h3>
+      <p>{item.text}</p>
+      {item.cta && <strong>{item.cta} →</strong>}
+    </a>
+  ) : (
+    <article class={`card ${item.placeholder ? 'placeholder' : ''}`}>
+      {item.meta && <span class="badge">{item.meta}</span>}
+      <h3>{item.title}</h3>
+      <p>{item.text}</p>
+    </article>
+  ))}
+</div>

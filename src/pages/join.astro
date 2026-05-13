@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import FaqList from '@components/FaqList.astro';
+import { club } from '@data/site';
+import { generalFaqs } from '@data/faqs';
+---
+<BaseLayout title="Join Us">
+  <Hero eyebrow="Join us" title="Come and try a friendly session." text="If you are eighteen or over and think Fenland Running Club might be for you, start by completing the PARQ form so the club can help you choose a suitable first session." primaryHref={club.parqUrl} primaryLabel="Complete the PARQ form" secondaryHref="/contact/" secondaryLabel="Contact the club" />
+  <section class="section section--white"><div class="container grid grid--2"><div><h2>How joining works</h2><ul class="check-list"><li>Complete the Physical Activity Readiness Form before attending.</li><li>Contact the club after submitting it so a suitable first session can be arranged.</li><li>If you can run four miles, most sessions should be suitable.</li><li>If four miles is too far at the moment, the club can help you choose the right session.</li></ul></div><div class="card"><h3>Membership fees</h3><p>The current public website lists £20 for single membership and £30 for family membership.</p><p>England Athletics affiliation is listed as an additional £23 per affiliated person.</p><p class="callout"><strong>TODO:</strong> confirm current fees before launch because membership and affiliation costs may change.</p></div></div></section>
+  <section class="section"><div class="container"><p class="eyebrow">Club app</p><h2>Connect My Club</h2><p class="section-intro">Fenland Running Club uses Connect My Club to manage training and membership. New members create an account and receive the club code when ready to join.</p><a class="button button--primary" href={club.connectMyClubUrl}>Open Connect My Club</a></div></section>
+  <section class="section section--white"><div class="container"><h2>Joining FAQs</h2><FaqList faqs={generalFaqs} /></div></section>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CardGrid from '@components/CardGrid.astro';
+import { getCollection } from 'astro:content';
+import { people } from '@data/people';
+const policies = (await getCollection('policies')).sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<BaseLayout title="Welfare & Policies">
+  <Hero eyebrow="Welfare & Policies" title="Clear, accessible club information." text="This section brings together welfare contacts, governance documents and policy placeholders that need confirmation from the committee." primaryHref="/contact/" primaryLabel="Contact the club" secondaryHref="/join/" secondaryLabel="Membership details" />
+  <section class="section section--white"><div class="container"><p class="eyebrow">Welfare</p><h2>Who can help?</h2><p class="section-intro">The current public website lists policy documents but does not expose confirmed welfare officer details in page text.</p><CardGrid items={people.slice(0, 3).map((person) => ({ title: person.role, text: `${person.name}. ${person.description}`, placeholder: true }))} columns="3" /></div></section>
+  <section class="section"><div class="container"><p class="eyebrow">Policies</p><h2>Documents to confirm</h2><div class="grid grid--3">{policies.map((policy) => <article class={`card ${policy.data.placeholder ? 'placeholder' : ''}`}><span class="badge">{policy.data.category}</span><h3>{policy.data.title}</h3><p>{policy.data.summary}</p><p class="meta">Review date: {policy.data.reviewDate}</p><p><strong>TODO:</strong> add confirmed policy text or document link.</p></article>)}</div></div></section>
+</BaseLayout>

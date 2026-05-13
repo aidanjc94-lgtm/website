@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('news')).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+<BaseLayout title="News">
+  <Hero eyebrow="News" title="Club updates and stories." text="News posts are stored as Markdown so committee members can add announcements, reports and reminders with a simple content file." primaryHref="/calendar/" primaryLabel="See calendar" secondaryHref="/contact/" secondaryLabel="Send an update" />
+  <section class="section section--white"><div class="container grid grid--2">{posts.map((post) => <article class={`card ${post.data.placeholder ? 'placeholder' : ''}`}><span class="badge">{post.data.category}</span><h2>{post.data.title}</h2><p>{post.data.summary}</p><p class="meta">{post.data.publishDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>{post.data.placeholder && <p><strong>TODO:</strong> placeholder post; replace with confirmed club news before launch.</p>}</article>)}</div></section>
+</BaseLayout>

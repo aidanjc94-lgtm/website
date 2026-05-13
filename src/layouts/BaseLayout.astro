@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import { navItems, club } from '@data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = club.tagline } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title === club.name ? title : `${title} | ${club.name}`}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo-link" href="/" aria-label="Fenland Running Club home">
+          <img src="/images/OIP.png" alt="Fenland Running Club" width="474" height="203" />
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul>
+            {navItems.map((item) => (
+              <li><a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="eyebrow">Established {club.established}</p>
+          <h2>{club.name}</h2>
+          <p>{club.tagline}</p>
+          <p>{club.venue}, {club.postcode}</p>
+        </div>
+        <div>
+          <p><strong>Quick links</strong></p>
+          <ul class="footer-links">
+            {navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          </ul>
+          <p style="margin-top: 1.5rem;">TODO: confirm official social links and contact email before launch.</p>
+          <p>© {new Date().getFullYear()} Fenland Running Club.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

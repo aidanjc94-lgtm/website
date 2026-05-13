@@ -1,0 +1,35 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+const { eyebrow, title, text, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{title}</h1>
+      <p>{text}</p>
+      <div class="hero-actions">
+        {primaryHref && primaryLabel && <a class="button button--primary" href={primaryHref}>{primaryLabel}</a>}
+        {secondaryHref && secondaryLabel && <a class="button button--ghost" href={secondaryHref}>{secondaryLabel}</a>}
+      </div>
+    </div>
+    <div class="hero-card" aria-label="Club highlights">
+      <img class="hero-logo" src="/images/OIP.png" alt="Fenland Running Club logo" width="474" height="203" />
+      <ul class="check-list">
+        <li>Adult running club in Wisbech</li>
+        <li>Tuesday and Thursday evenings</li>
+        <li>Friendly support for different abilities</li>
+        <li>Affiliated to England Athletics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<div class="wave" aria-hidden="true"></div>

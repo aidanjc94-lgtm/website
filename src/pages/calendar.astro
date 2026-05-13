@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import { getCollection } from 'astro:content';
+const events = (await getCollection('events')).sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf());
+---
+<BaseLayout title="Calendar">
+  <Hero eyebrow="Calendar" title="Sessions, courses and race dates." text="Calendar content is managed with event files so committee members can add sessions, social runs and race information without changing page code." primaryHref="/training/" primaryLabel="Training details" secondaryHref="/contact/" secondaryLabel="Check a session" />
+  <section class="section section--white"><div class="container grid grid--3">{events.map((event) => <article class={`card ${event.data.placeholder ? 'placeholder' : ''}`}><span class="badge">{event.data.category}</span><h2>{event.data.title}</h2><p>{event.data.summary}</p><p class="meta">{event.data.startDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>{event.data.time && <p>{event.data.time}</p>}<p>{event.data.location}</p>{event.data.ctaUrl && event.data.ctaLabel && <a class="button button--primary" href={event.data.ctaUrl}>{event.data.ctaLabel}</a>}</article>)}</div></section>
+</BaseLayout>

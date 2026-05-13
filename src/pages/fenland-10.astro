@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import FaqList from '@components/FaqList.astro';
+import { club } from '@data/site';
+import { fenland10Faqs } from '@data/faqs';
+---
+<BaseLayout title="Fenland 10">
+  <Hero eyebrow="Fenland 10" title="A fast, flat Fenland race." text="The Fenland 10 is a flat, PB-potential 10-mile open-road race, hosted by Fenland Running Club and supported by enthusiastic marshals." primaryHref={club.sublimeTimingUrl} primaryLabel="Enter via Sublime Timing" secondaryHref="/calendar/" secondaryLabel="View race date" />
+  <section class="section section--white"><div class="container grid grid--2"><div class="prose"><h2>Race details</h2><p>The current public website lists the race for Sunday 25 October 2026, starting at 11:00am, with number collection from 09:30.</p><p>The venue is listed as West Walton School, West Walton, Wisbech PE14 7HA. The route starts near West Walton Junior School and heads onto flat Fenland roads.</p><p>The race is limited to 300 runners and is listed as an England Athletics licensed race, with the licence number still to be confirmed.</p></div><div class="card"><h3>What runners can expect</h3><ul class="check-list"><li>Two water stations</li><li>Chip timing with live results</li><li>Memento for all finishers</li><li>Cakes and refreshments</li><li>Supportive marshals</li><li>Certified course</li></ul></div></div></section>
+  <section class="section"><div class="container grid grid--2"><div class="card"><h3>Entry fees</h3><p>The current website lists £26 affiliated and £28 unaffiliated, with no entries on the day.</p><p class="callout"><strong>TODO:</strong> confirm race licence, fees and entry link before launch.</p></div><div class="card"><h3>Refunds and transfers</h3><p>Until the Friday before race day, the current policy allows transfer to another runner. After that Friday, the current information says the club is unable to defer, transfer or refund.</p></div></div></section>
+  <section class="section section--white"><div class="container"><h2>Race FAQs</h2><FaqList faqs={fenland10Faqs} /></div></section>
+</BaseLayout>

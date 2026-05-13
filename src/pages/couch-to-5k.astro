@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import FaqList from '@components/FaqList.astro';
+import { club } from '@data/site';
+import { couchFaqs } from '@data/faqs';
+---
+<BaseLayout title="Couch to 5K">
+  <Hero eyebrow="Beginners welcome" title="Your first 5K starts here." text="Fenland Running Club's Couch to 5K is designed for people who do not feel like runners yet. It is gentle, friendly and supportive." primaryHref={club.parqUrl} primaryLabel="Sign up with the PARQ form" secondaryHref="/contact/" secondaryLabel="Ask about the course" />
+  <section class="section section--white"><div class="container grid grid--2"><div class="prose"><h2>No pressure, no one left behind.</h2><p>You do not need to be fit, fast or confident. If you can walk, you can start Couch to 5K. Sessions include plenty of walking, encouragement and support.</p><p>The current public information says the course follows the NHS app programme, with extra help on warmups and stretching.</p></div><div class="card"><h3>Current public details</h3><ul><li>Start date listed: Tuesday 12 May 2026</li><li>When: Tuesday and Thursday evenings</li><li>Time: 7:00pm</li><li>Where: Wisbech Rugby Club, PE13 1RG</li><li>Cost: free</li></ul><p class="callout"><strong>TODO:</strong> confirm the next course dates before launch.</p></div></div></section>
+  <section class="section"><div class="container"><p class="eyebrow">Support</p><h2>Led by Run Leaders</h2><p class="section-intro">The current website names Zoe and Andrew as main run leaders and says they are also Run Directors at Wisbech parkrun. Please confirm consent before adding more personal details or photographs.</p><FaqList faqs={couchFaqs} /></div></section>
+</BaseLayout>

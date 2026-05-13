@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CardGrid from '@components/CardGrid.astro';
+import { getCollection } from 'astro:content';
+import { club, featureCards } from '@data/site';
+
+const events = (await getCollection('events')).sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf()).slice(0, 3);
+const news = (await getCollection('news')).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()).slice(0, 2);
+---
+<BaseLayout title="Fenland Running Club" description="Friendly, inclusive adult running club in Wisbech, Cambridgeshire.">
+  <Hero eyebrow="Wisbech, Cambridgeshire" title="Run with friendly Fenland people." text="Fenland Running Club is an adult running club with a welcoming atmosphere, inclusive training and support for runners with different goals and abilities." primaryHref="/join/" primaryLabel="Join us" secondaryHref="/training/" secondaryLabel="See training" />
+  <section class="section section--white">
+    <div class="container">
+      <p class="eyebrow">What we do</p>
+      <h2>Friendly running, year-round.</h2>
+      <p class="section-intro">We meet {club.meetingTimes}. Sessions may have multiple groups or be arranged so everyone works together, whether you want to improve a PB, run socially or build confidence.</p>
+      <CardGrid items={featureCards} columns="4" />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid grid--2">
+      <div>
+        <p class="eyebrow">Upcoming</p>
+        <h2>Calendar highlights</h2>
+        <p class="section-intro">Key club sessions and events are stored as content files so future committee members can update them without editing components.</p>
+      </div>
+      <div class="grid">
+        {events.map((event) => <a class="card card--link" href="/calendar/"><span class="badge">{event.data.category}</span><h3>{event.data.title}</h3><p>{event.data.summary}</p><p class="meta">{event.data.time} · {event.data.location}</p></a>)}
+      </div>
+    </div>
+  </section>
+  <section class="section section--purple">
+    <div class="container grid grid--2">
+      <div>
+        <p class="eyebrow">Community</p>
+        <h2>New runners are welcome.</h2>
+        <p class="section-intro">If you are eighteen or over, complete the PARQ form first. If you can run four miles, most sessions should suit you; if not, the club can help you choose the right first session.</p>
+        <div class="button-row"><a class="button button--secondary" href={club.parqUrl}>Complete the PARQ form</a><a class="button button--ghost" href="/contact/">Ask a question</a></div>
+      </div>
+      <div class="card">
+        <h3>Latest news</h3>
+        {news.map((post) => <p><a href="/news/"><strong>{post.data.title}</strong></a><br /><span class="meta">{post.data.category}</span></p>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

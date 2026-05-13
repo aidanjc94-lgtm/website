@@ -1,0 +1,9 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import { club } from '@data/site';
+---
+<BaseLayout title="Contact">
+  <Hero eyebrow="Contact" title="Get in touch before your first run." text="New runners should complete the PARQ form and contact the club so the right first session can be arranged." primaryHref={club.parqUrl} primaryLabel="Complete the PARQ form" secondaryHref="/join/" secondaryLabel="How joining works" />
+  <section class="section section--white"><div class="container grid grid--2"><div class="card"><h2>Find us</h2><p><strong>{club.venue}</strong></p><p>{club.address}</p><p>Postcode: {club.postcode}</p><p>what3words: <a href="https://what3words.com/nimbly.organisms.closets">///{club.what3words}</a></p><p><a class="button button--primary" href="https://www.google.com/maps/search/?api=1&query=PE13%201RG">Open map</a></p></div><div class="card placeholder"><h2>Contact form</h2><p><strong>TODO:</strong> confirm the club email address or static form provider before adding a working contact form.</p><p>The previous website form asked for name, email address, contact number, subject and message. A future form must include clear labels, error messages and spam protection that does not expose secrets in the repository.</p></div></div></section>
+</BaseLayout>
