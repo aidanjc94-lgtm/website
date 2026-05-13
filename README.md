@@ -48,23 +48,18 @@ The exported site is written to `out/` by Next.js and must not be committed.
 
 ## Content editing
 
-Routine content is editable through Pages CMS, configured by `.pages.yml`. Editors should use the CMS rather than editing React or TypeScript files.
+Editable content lives in `src/content`:
 
-Editable content lives in `content/`:
+- `news.ts` — news posts and updates
+- `events.ts` — calendar entries
+- `policies.ts` — welfare and policy placeholders
+- `faqs.ts` — frequently asked questions
+- `people.ts` — committee, coaches and run leaders
+- `fenland10.ts` — Fenland 10 race details
+- `clubKit.ts` — club kit details
+- `site.ts` — site-wide contact, venue and navigation data
 
-- `content/news/*.md` — news posts with frontmatter and Markdown body
-- `content/events/*.json` — calendar entries
-- `content/committee/*.json` — committee members
-- `content/coaches/*.json` — coaches
-- `content/run-leaders/*.json` — run leaders
-- `content/faqs/*.json` — frequently asked questions
-- `content/policies/*.json` — welfare and policy metadata
-- `content/settings/site.json` — site-wide contact, venue and navigation data
-- `content/pages/*.json` — editable page content
-
-Media uploaded through Pages CMS is stored in `public/images` and `public/documents`.
-
-Many entries are intentionally marked `TODO` because the club needs to confirm dates, fees, names, contact details, policy documents and race information before launch. See `docs/editor-guide.md` for the non-technical editing workflow.
+Many entries are intentionally marked `TODO` because the club needs to confirm dates, fees, names, contact details, policy documents and race information before launch.
 
 ## Deployment
 

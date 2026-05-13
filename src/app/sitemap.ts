@@ -2,8 +2,6 @@ import type { MetadataRoute } from 'next';
 import { newsPosts } from '@/content/news';
 import { navigation } from '@/content/site';
 
-export const dynamic = 'force-static';
-
 const siteUrl = 'https://fenland-running-club.github.io';
 
 export default function sitemap(): MetadataRoute.Sitemap {

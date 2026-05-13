@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { Badge } from '@/components/ui/Badge';
-import { MarkdownContent } from '@/components/ui/MarkdownContent';
 import { getNewsPost, newsPosts } from '@/content/news';
 import { formatDate } from '@/lib/utils';
 
@@ -31,8 +30,10 @@ export default async function NewsPostPage({ params }: NewsPostPageProps) {
         <h1 className="mt-5 text-4xl font-black tracking-tight text-fenland-dark sm:text-6xl">{post.title}</h1>
         <p className="mt-4 font-semibold text-fenland-dark/60">{formatDate(post.date)}</p>
         <p className="mt-6 text-xl leading-9 text-fenland-dark/75">{post.summary}</p>
-        <div className="mt-10">
-          <MarkdownContent content={post.body} />
+        <div className="mt-10 space-y-6 text-lg leading-9 text-fenland-dark/80">
+          {post.content.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
       </article>
     </>
